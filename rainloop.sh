@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#############################################################
-Install script for RainLoop v.1.17 ONLY              ########
-The link may be different later!                     ########   
-By sokoban - v.1.0                                   ########
-#############################################################
-
 # Update the package list and upgrade existing packages
 sudo apt update
 sudo apt upgrade -y
@@ -65,4 +59,6 @@ sudo systemctl reload nginx
 # Restart PHP-FPM using the determined version
 sudo systemctl restart "php${php_version}-fpm"
 
-echo "RainLoop has been installed successfully. You can access it at http://$server_fqdn"
+echo "RainLoop has been installed successfully. You can access the admin panel at http://$server_fqdn/?admin"
+echo "Default username: admin"
+echo "default password: 12345"
