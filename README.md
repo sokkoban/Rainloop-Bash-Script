@@ -3,6 +3,7 @@ Inastall Rainloop V.1.17
 Reguirements:
 1. You must have working SMTP server - Postfix, Dovecot, Exim
 2. You must have a FQDN - Domain name
+3. Ubuntu server 22.0.4
 
 This script will install only:
 1. Rainloop email web client
