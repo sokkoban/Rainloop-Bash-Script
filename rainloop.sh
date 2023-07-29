@@ -4,8 +4,8 @@
 sudo apt update
 sudo apt upgrade -y
 
-# Install required packages (web server, PHP, and others)
-sudo apt install -y nginx php-fpm php-mbstring php-dom php-curl unzip
+# Install required packages (web server, PHP, Certbot, and others)
+sudo apt install -y nginx php-fpm php-mbstring php-dom php-curl unzip certbot python3-certbot-nginx
 
 # Get the server's FQDN
 server_fqdn=$(hostname -f)
@@ -25,11 +25,22 @@ sudo rm rainloop.zip
 sudo chown -R www-data:www-data /var/www/html/rainloop
 sudo chmod -R 755 /var/www/html/rainloop
 
-# Configure Nginx server block for RainLoop
+# Configure Nginx server block for RainLoop with HTTPS
 sudo tee /etc/nginx/sites-available/rainloop << EOF
 server {
     listen 80;
-    server_name $server_fqdn; # Use the FQDN as the server name
+    server_name $server_fqdn;
+
+    # Redirect HTTP to HTTPS
+    return 301 https://\$host\$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name $server_fqdn;
+
+    ssl_certificate /etc/letsencrypt/live/$server_fqdn/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/$server_fqdn/privkey.pem;
 
     root /var/www/html/rainloop;
     index index.php;
@@ -40,7 +51,7 @@ server {
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:$php_fpm_socket; # Use the determined PHP version
+        fastcgi_pass unix:$php_fpm_socket;
     }
 
     location ~* /\.ht {
@@ -59,6 +70,8 @@ sudo systemctl reload nginx
 # Restart PHP-FPM using the determined version
 sudo systemctl restart "php${php_version}-fpm"
 
-echo "RainLoop has been installed successfully. You can access the admin panel at http://$server_fqdn/?admin"
-echo "Default username: admin"
-echo "default password: 12345"
+# Obtain Let's Encrypt SSL certificate
+sudo certbot --nginx -d $server_fqdn
+
+echo "RainLoop has been installed successfully. You can access the admin panel at https://$server_fqdn/?admin"
+echo "Default username for the admin panel is 'admin', and the default password is '12345'. Please change the password after login for security purposes."
