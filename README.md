@@ -5,6 +5,6 @@ Reguirements:
 2. You must have a FQDN - Domain name
 
 This script will install only:
-Rainloop email web client
-PHP
-Nginx
+1. Rainloop email web client
+2. PHP
+3. Nginx
