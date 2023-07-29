@@ -11,6 +11,6 @@ This script will install only:
 3. Nginx
 
 Installation:
-wget https://github.com/sokkoban/Rainloop-Bash-Script/releases/download/Rainloop_bash_install_script/rainloop.sh
-chmod +x rainloop.sh
-./rainloop.sh
+1. wget https://github.com/sokkoban/Rainloop-Bash-Script/releases/download/Rainloop_bash_install_script/rainloop.sh
+2. chmod +x rainloop.sh
+3. execute script => ./rainloop.sh
