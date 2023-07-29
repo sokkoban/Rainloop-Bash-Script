@@ -9,3 +9,8 @@ This script will install only:
 1. Rainloop email web client
 2. PHP
 3. Nginx
+
+Installation:
+wget https://github.com/sokkoban/Rainloop-Bash-Script/releases/download/Rainloop_bash_install_script/rainloop.sh
+chmod +x rainloop.sh
+./rainloop.sh
