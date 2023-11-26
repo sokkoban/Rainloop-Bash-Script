@@ -3,4 +3,4 @@
 <h4>This script will install only:</h4>
 <p>1. Rainloop email web client<br />2. PHP<br />3. Nginx</p>
 <h4>Installation:</h4>
-<p>1. wget https://github.com/sokkoban/Rainloop-Bash-Script/releases/download/Rainloop_bash_install_script/rainloop.sh<br />2. chmod +x rainloop.sh<br />3. execute script =&gt; ./rainloop.sh</p>
+<p>1. wget https://raw.githubusercontent.com/sokkoban/Rainloop-Bash-Script/main/rainloop.sh<br />2. chmod +x rainloop.sh<br />3. execute script =&gt; ./rainloop.sh</p>
