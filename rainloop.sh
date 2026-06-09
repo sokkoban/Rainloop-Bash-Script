@@ -17,7 +17,7 @@ php_fpm_socket="/run/php/php${php_version}-fpm.sock"
 # Download RainLoop version 1.17.0 from the specified link
 sudo rm -rf /var/www/html/rainloop
 sudo mkdir -p /var/www/html/rainloop
-sudo curl -L -o rainloop.zip https://github.com/RainLoop/rainloop-webmail/releases/download/v1.17.0/rainloop-legacy-1.17.0.zip
+sudo curl -L -o rainloop.zip https://github.com/roundcube/roundcubemail/releases/download/1.7.1/roundcubemail-1.7.1.tar.gz
 sudo unzip -q rainloop.zip -d /var/www/html/rainloop
 sudo rm rainloop.zip
 
